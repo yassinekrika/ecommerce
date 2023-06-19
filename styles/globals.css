@@ -83,6 +83,7 @@ nav .bag {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 100px;
 }
 .btns {
     margin-bottom: 116px;
