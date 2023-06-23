@@ -1,42 +1,47 @@
 import prisma from "@lib/prisma"
 
 export const POST = async (req) => {
-    const { userId, productId, quantity } = await req.json()
-
-    const cartId = await prisma.carts.findUnique({
+    try {
+      const { userId, productId, quantity } = await req.json()
+   
+      const cart = await prisma.carts.findFirst({
         where: {
-            id: parseInt(userId)
+          userId: parseInt(userId)
         }
-    })
+      })
 
-    const productExistInCart = await prisma.cartProducts.findFirst({
-      where: {
-        productId: parseInt(productId),
-      }
-    })
-
-    if (productExistInCart) {
-      const increaseQty = await prisma.cartProducts.update({
+      const productExistInCart = await prisma.cartProducts.findFirst({
         where: {
-          id: productExistInCart.id
-        },
-        data: {
-          quantity: {
-            increment: 1
+          productId: parseInt(productId),
+        }
+      })
+      
+      if (productExistInCart) {
+        const increaseQty = await prisma.cartProducts.update({
+          where: {
+            id: productExistInCart.id
+          },
+          data: {
+            quantity: {
+              increment: 1
+            }
           }
-        }
-      })
-      return new Response("product added to cart")
-    } else {
-      const cartProduct = await prisma.CartProducts.create({
-        data: {
-          cartId: cartId.id, 
-          productId: parseInt(productId),  
-          quantity: parseInt(quantity),
-        }
-      })
-      return new Response("product added to cart")
-    }   
+        })
+        return new Response("product added to cart")
+      } else {
+        
+        const cartProduct = await prisma.CartProducts.create({
+          data: {
+            cartId: cart.id, 
+            productId: parseInt(productId),  
+            quantity: parseInt(quantity),
+          }
+        })
+        return new Response("product added to cart")
+      }   
+    } catch (e) {
+      console.log(e)
+    }
 }
 
 export const GET = async (req) => {

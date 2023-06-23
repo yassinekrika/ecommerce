@@ -117,7 +117,7 @@ nav .bag {
 .bg-img-detail {
     width: 600px;
     height: 500px;
-    background-color: #D9D9D9;
+    background-color: rgb(209, 213, 219);
     border-radius: 40px;
     display: flex;
     justify-content: center;
@@ -178,6 +178,7 @@ nav .bag {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 
 .dropdown, .dropdown-login .title {

@@ -41,7 +41,7 @@ const ProductDetail = ({ params }) => {
   
   return (
     <div className="product-detail">
-        <div className="bg-img-detail">
+        <div className="bg-img-detail bg-gray-300">
             <Image
                 alt='product-detail-img'
                 src={'data:image/webp;base64,'+product.img}
@@ -61,10 +61,10 @@ const ProductDetail = ({ params }) => {
             </div>
             <div className='mt-12'>
               <button 
-                className='w-50 border-2 border-teal-800 solid my-5 py-3 px-10 bg-red'
+                className='w-50 border-2 border-red-500 solid my-5 py-3 px-10 bg-red'
                 onClick={handleAddCart} // thi is next
               >Add to cart</button>
-              <button className='w-50 text-white mx-5 my-5 py-3 px-10 bg-rose-800'>Buy now</button>
+              <button className='w-50 text-white mx-5 my-5 py-3 px-10 bg-red-500'>Buy now</button>
             </div>
         </div>
     </div>
