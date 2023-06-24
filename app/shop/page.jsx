@@ -6,6 +6,7 @@ import Card from '@components/Card'
 const shop = () => {
 
   const [products, setProducts] = useState([])
+  const data = [...products]
 
   const fetchProduct = async () => {
     return fetch('/api/product')
@@ -17,16 +18,34 @@ const shop = () => {
     fetchProduct()
   }, [])
 
+  const productCategory = [...new Set(data.map(product => product.category))]
+
+  const filtereProduct = (filterVal) => {
+    const filteredProduct = products.filter((product) => {
+      return product.category === filterVal
+    })
+    setProducts(filteredProduct)
+  }
+
   return (
     <>
         <div className="head">
             <h1 className='head-text'>Best Seller Products</h1>
             <div className="btns">
-                <button className='btn-filter active' type='button'>All</button>
-                <button className='btn-filter' type='button'>Laptop</button>
-                <button className='btn-filter' type='button'>Earphone</button>
-                <button className='btn-filter' type='button'>Console</button>
-                <button className='btn-filter' type='button'>Speaker</button>
+                <button 
+                  className='btn-filter active' 
+                  type='button'
+                  onClick={() => {fetchProduct()}}
+                >All</button>
+
+                {data && productCategory.map((category) => (
+                  <button 
+                    key={category} 
+                    className='btn-filter' 
+                    type='button'
+                    onClick={() => filtereProduct(category)}
+                  >{category}</button>
+                ))}
             </div>
         </div>
         <div className="show-product">
