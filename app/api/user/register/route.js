@@ -21,7 +21,7 @@ export const POST = async (req) => {
 
     const createCart = await prisma.carts.create({
       data: {
-        userId: userId
+        userId: userId.id
       }
     })
 

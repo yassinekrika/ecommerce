@@ -13,8 +13,8 @@ const ProductDetail = ({ params }) => {
 
   const fetchProduct = async () => {
     return await fetch(`/api/product/${params.id}`)
-          .then(res => res.json())
-          .then(data => setProduct(data))
+            .then(res => res.json())
+            .then(data => setProduct(data))
   }
 
   useEffect(() => {
@@ -35,8 +35,8 @@ const ProductDetail = ({ params }) => {
       window.location.reload()
   }
   const handleQuantity = (e) => {
-      const value = e.target.value
-      setQuantity(value)
+    const value = e.target.value
+    setQuantity(value)
   }
   
   return (

@@ -9,6 +9,7 @@ export const POST = async (req) => {
           userId: parseInt(userId)
         }
       })
+      console.log(userId)
 
       const productExistInCart = await prisma.cartProducts.findFirst({
         where: {
@@ -29,7 +30,6 @@ export const POST = async (req) => {
         })
         return new Response("product added to cart")
       } else {
-        
         const cartProduct = await prisma.CartProducts.create({
           data: {
             cartId: cart.id, 
@@ -39,7 +39,7 @@ export const POST = async (req) => {
         })
         return new Response("product added to cart")
       }   
-    } catch (e) {
+    } catch(e) {
       console.log(e)
     }
 }
