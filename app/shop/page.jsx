@@ -5,13 +5,16 @@ import Card from '@components/Card'
 
 const shop = () => {
 
+  const [data, setData] = useState([])
   const [products, setProducts] = useState([])
-  const data = [...products]
 
   const fetchProduct = async () => {
     return fetch('/api/product')
           .then(res => res.json())
-          .then(data => setProducts(data))
+          .then(data => {
+            setData(data)
+            setProducts(data)
+          })
   }
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const shop = () => {
   const productCategory = [...new Set(data.map(product => product.category))]
 
   const filtereProduct = (filterVal) => {
-    const filteredProduct = products.filter((product) => {
+    const filteredProduct = data.filter((product) => {
       return product.category === filterVal
     })
     setProducts(filteredProduct)
@@ -38,7 +41,7 @@ const shop = () => {
                   onClick={() => {fetchProduct()}}
                 >All</button>
 
-                {data && productCategory.map((category) => (
+                {products && productCategory.map((category) => (
                   <button 
                     key={category} 
                     className='btn-filter' 
