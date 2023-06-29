@@ -7,6 +7,7 @@ const shop = () => {
 
   const [data, setData] = useState([])
   const [products, setProducts] = useState([])
+  const [isActive, setIsActive] = useState(null)
 
   const fetchProduct = async () => {
     return fetch('/api/product')
@@ -19,6 +20,7 @@ const shop = () => {
 
   useEffect(() => {
     fetchProduct()
+    setIsActive('All')
   }, [])
 
   const productCategory = [...new Set(data.map(product => product.category))]
@@ -36,17 +38,23 @@ const shop = () => {
             <h1 className='head-text'>Best Seller Products</h1>
             <div className="btns">
                 <button 
-                  className='btn-filter active' 
+                  className={`btn-filter${isActive === 'All' ? ' active' : ''}`}
                   type='button'
-                  onClick={() => {fetchProduct()}}
+                  onClick={() => {
+                    fetchProduct()
+                    setIsActive('All')
+                  }}
                 >All</button>
 
                 {products && productCategory.map((category) => (
                   <button 
                     key={category} 
-                    className='btn-filter' 
+                    className={`btn-filter ${isActive === category ? 'active' : ''}`}
                     type='button'
-                    onClick={() => filtereProduct(category)}
+                    onClick={(e) => {
+                      filtereProduct(category)
+                      setIsActive(category)
+                    }}
                   >{category}</button>
                 ))}
             </div>
