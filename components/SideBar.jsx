@@ -2,7 +2,6 @@
 
 import CartItem from './CartItem';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from 'react';
