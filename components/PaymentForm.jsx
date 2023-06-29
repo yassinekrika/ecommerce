@@ -31,7 +31,7 @@ const PaymentForm = () => {
         cardName: "",
         shippingAddress: "",
         totalAmount: totalPrice,
-        userId: parseInt(session.user.id),
+        userId: parseInt(session?.user?.id) ? '' : null,
     });
     console.log(formData)
     const handleChange = (e) => {

@@ -19,7 +19,11 @@ const Nav = ({ setTggleSideBar }) => {
   const [toggleLoginDropDown, setToggleLoginDropDown] = useState(false)
 
   const showCart = () => {
-    setTggleSideBar(prev => !prev)
+    if (session?.user) {
+      setTggleSideBar(prev => !prev)
+    } else {
+      alert('you have to create a user account')
+    }
   }
 
   return (
