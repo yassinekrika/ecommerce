@@ -2,10 +2,10 @@
     "builds": [
       { "src": "prisma/**/*.prisma", "use": "prisma" },
       { "src": "api/**/*.js", "use": "@vercel/node" },
-      { "src": "vercel-build-command", "use": "@vercel/static-build" }
+      { "src": "vercel-build-command", "use": "@vercel/static" }
     ],
     "routes": [
       { "src": "/.*", "dest": "/vercel-build-command" }
     ]
-}
+  }
   
