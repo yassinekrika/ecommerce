@@ -1,13 +1,4 @@
 {
-    "builds": [
-      { "src": "prisma/**/*.prisma", "use": "prisma", "config": {
-        "build": "builder.build"
-      } },
-      { "src": "api/**/*.js", "use": "@vercel/node" },
-      { "src": "vercel-build-command", "use": "@vercel/static" }
-    ],
-    "routes": [
-      { "src": "/.*", "dest": "/vercel-build-command" }
-    ]
-  }
+    "buildCommand": "next build"    
+}
   
