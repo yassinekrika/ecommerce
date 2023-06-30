@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    distDir: 'build',
     experimental: {
       appDir: true,
       serverComponentsExternalPackages: ["mysql"],
@@ -17,4 +16,4 @@ const nextConfig = {
     }
   }
   
-  module.exports = nextConfig
+module.exports = nextConfig
