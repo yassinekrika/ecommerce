@@ -6,5 +6,5 @@
     "routes": [
       { "src": "/.*", "dest": "/vercel-build-command" }
     ]
-  }
+}
   
