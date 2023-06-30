@@ -1,6 +1,6 @@
 {
     "builds": [
-      { "src": "prisma/**/*.prisma", "use": "@prisma/cli" },
+      { "src": "prisma/**/*.prisma", "use": "prisma" },
       { "src": "vercel-build-command", "use": "@vercel/static-build" }
     ],
     "routes": [
